@@ -26,7 +26,7 @@ Autoregressive (AR) decoding generates one token per forward pass, leaving the s
 - [📙 6. Hybrid Methods](#class-6)
 - [📙 7. Benchmarks and Evaluation](#class-7)
 
-<a id="contents-with-subclasses"></a>
+<!-- <a id="contents-with-subclasses"></a>
 ## 📖 Contents with Subclasses
 
 The taxonomy contains **296 category placements covering 294 unique papers**. **Agent Forest** and **JetSpec** each belong to two categories and therefore appear twice. Counts below summarize the complete paper-by-paper placements shown in the overview and detailed tables.
@@ -111,9 +111,9 @@ The taxonomy contains **296 category placements covering 294 unique papers**. **
 - [📙 7. Benchmarks and Evaluation](#class-7) — **7 papers** directly under the layer: related surveys, benchmark suites, and diagnostic studies.
 
 <a id="taxonomy-overview"></a>
-## 🗺️ Overview: A Taxonomy of Parallel Decoding
+## 🗺️ Overview: A Taxonomy of Parallel Decoding -->
 
-We organize **296 category placements covering 294 unique papers** into seven layers. Layers 1–6 contain 16 subclasses, while Layer 7 attaches evaluation resources directly to the layer. **Agent Forest** and **JetSpec** each have two paper-backed classifications and therefore appear in both applicable sections. Within each section, papers run from older to newer; click a paper to jump to its full row.
+We organize **296 category placements covering 294 unique papers** into seven layers. Layers 1–6 contain 16 subclasses, while Layer 7 attaches evaluation resources directly to the layer. Within each section, papers run from older to newer; click a paper to jump to its full row.
 
 <table>
 <thead>
