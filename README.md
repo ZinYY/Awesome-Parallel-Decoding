@@ -9,6 +9,7 @@
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC--BY--NC--ND%204.0-blue.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 [![PRWelcome](https://img.shields.io/badge/PRs-Welcome-red)](https://github.com/ZinYY/Awesome-Parallel-Decoding/pulls)
 [![Last Commit](https://img.shields.io/github/last-commit/ZinYY/Awesome-Parallel-Decoding.svg)](https://github.com/ZinYY/Awesome-Parallel-Decoding)
+[![Paper](https://img.shields.io/badge/Survey-Paper-blue)](./paper/PD_Survey.pdf)
 
 📒 A curated list of **Awesome Parallel Decoding** papers to accelerate the inference of (autoregressive) LLMs.
 
@@ -16,7 +17,9 @@ Autoregressive (AR) decoding generates one token per forward pass, leaving the s
 
 <!-- Concretely, the collection is structured into seven parts: **(1) Token-level** methods (speculative decoding, self-speculation, multi-head / multi-token prediction, tree verification, retrieval, multi-draft theory, and resource-aware variants); **(2) Sequence-level** methods that speculate over reasoning steps and semantic units; **(3) Task-level** methods that parallelize agents, tools, and function calls; **(4) Architecture-level** methods that change the generation paradigm itself (diffusion LLMs, block-diffusion, semi-autoregressive models); **(5) System and infrastructure** support in production serving engines; **(6) Hybrid** methods that fuse multiple paradigms (e.g., speculative decoding × diffusion, model cascades × speculation); and **(7) Benchmarks and evaluation** resources. Contributions via pull requests are warmly welcomed. -->
 
-> **Legend.** Venue is given as the publication venue (e.g., `ICML'24`, `NeurIPS'25`); preprints use `arXiv'YY`. The bracketed token at the start of a title is the method's alias/acronym (e.g., `[EAGLE]`). Author and affiliation fields are filled where reliably verifiable and marked `N/A` otherwise. A blank Code cell means no official public code repository is currently known.
+## 📢 News
+
+- `2026-10-18` Our survey paper is now available! Please see [paper/PD_Survey.pdf](./paper/PD_Survey.pdf).
 
 <a id="contents"></a>
 ## 📖 Contents
@@ -736,10 +739,10 @@ Contributions are very welcome! If you would like to add a paper, fix metadata (
 ```bibtex
 @misc{survey-parallel-decoding,
   title        = {Parallel Decoding of Language Models: A Survey},
-  author       = {Yu-Yang Qian and Jia-Chen Liu and Hao-Cong Wu and Lanxiang Hu and Hao Zhang and Peng Zhao},
+  author       = {Yu-Yang Qian and Jia-Chen Liu and Hao-Cong Wu and Lanxiang Hu and Yibo Zhu and Hao Zhang and Peng Zhao},
   year         = {2026},
   note         = {\url{https://github.com/ZinYY/Awesome-Parallel-Decoding}}
 }
 ```
 
-Our survey paper is coming soon, stay tuned!
+📖 Our survey paper is at [this file](./paper/PD_Survey.pdf).
