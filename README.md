@@ -36,7 +36,7 @@ Autoregressive (AR) decoding generates one token per forward pass, leaving the s
 <!-- <a id="contents-with-subclasses"></a>
 ## 📖 Contents with Subclasses
 
-The taxonomy contains **296 category placements covering 294 unique papers**. **Agent Forest** and **JetSpec** each belong to two categories and therefore appear twice. Counts below summarize the complete paper-by-paper placements shown in the overview and detailed tables.
+The taxonomy contains **297 category placements covering 295 unique papers**. **Agent Forest** and **JetSpec** each belong to two categories and therefore appear twice. Counts below summarize the complete paper-by-paper placements shown in the overview and detailed tables.
 
 - [🗺️ Overview: A Taxonomy of Parallel Decoding](#taxonomy-overview)
 - [📙 1. Token-Level Parallel Decoding](#class-1)
@@ -93,7 +93,7 @@ The taxonomy contains **296 category placements covering 294 unique papers**. **
 
   - [4.2 Decoding and Sampling Algorithms](#subclass-4-2) — Inference algorithms accelerate trained non-autoregressive or diffusion language models through unmasking policies, confidence schedules, trajectory methods, or error correction.
 
-    **24 papers.**
+    **25 papers.**
 
 - [📙 5. System and Infrastructure](#class-5)
 
@@ -178,7 +178,7 @@ Within each section, papers run from older to newer; click a paper to jump to it
 </tr>
 <tr>
 <td><a href="#subclass-4-2">4.2 Decoding and Sampling Algorithms</a></td>
-<td><a href="#EB-Sampler_NeurIPS_25">EB-Sampler (NeurIPS'25)</a> · <a href="#Fast-dLLM_ICLR_26">Fast-dLLM (ICLR'26)</a> · <a href="#SlowFast_Sampling_ICLR_26">SlowFast Sampling (ICLR'26)</a> · <a href="#WINO_ICLR_26">WINO (ICLR'26)</a> · <a href="#Prophet_ICLR_26">Prophet (ICLR'26)</a> · <a href="#RWS_EMNLP_25">RWS (EMNLP'25)</a> · <a href="#LSD_NeurIPS_25">LSD (NeurIPS'25)</a> · <a href="#ADJUST_arXiv_25">ADJUST (arXiv'25)</a> · <a href="#Learn2PD_ICLR_26">Learn2PD (ICLR'26)</a> · <a href="#dParallel_ICLR_26">dParallel (ICLR'26)</a> · <a href="#FreeDave_arXiv_25">FreeDave (NeurIPSW'25)</a> · <a href="#LocalLeap_arXiv_25">LocalLeap (arXiv'25)</a> · <a href="#Saber_arXiv_25">Saber (ACL'26)</a> · <a href="#LoPA_arXiv_25">LoPA (arXiv'25)</a> · <a href="#SchED_arXiv_25">SchED (Findings-ACL'26)</a> · <a href="#CadLLM_arXiv_25">CadLLM (Findings-ACL'26)</a> · <a href="#Learning_Unmasking_Policies_ICML_26">Learning Unmasking Policies (ICML'26)</a> · <a href="#Order-Token_Search_arXiv_26">Order-Token Search (arXiv'26)</a> · <a href="#d3LLM_ICML_26">d3LLM (ICML'26)</a> · <a href="#RDD_arXiv_26">RDD (arXiv'26)</a> · <a href="#ReMix_CVPR_26">ReMix (CVPR'26)</a> · <a href="#Info-Gain_Sampler_ICML_26">Info-Gain Sampler (ICML'26)</a> · <a href="#DOS_arXiv_26">DOS (Findings-ACL'26)</a> · <a href="#Confidence-Based_Decoding_arXiv_26">Confidence-Based Decoding (arXiv'26)</a></td>
+<td><a href="#EB-Sampler_NeurIPS_25">EB-Sampler (NeurIPS'25)</a> · <a href="#Fast-dLLM_ICLR_26">Fast-dLLM (ICLR'26)</a> · <a href="#SlowFast_Sampling_ICLR_26">SlowFast Sampling (ICLR'26)</a> · <a href="#WINO_ICLR_26">WINO (ICLR'26)</a> · <a href="#UNCODE_ACL_26">UNCODE (ACL'26)</a> · <a href="#Prophet_ICLR_26">Prophet (ICLR'26)</a> · <a href="#RWS_EMNLP_25">RWS (EMNLP'25)</a> · <a href="#LSD_NeurIPS_25">LSD (NeurIPS'25)</a> · <a href="#ADJUST_arXiv_25">ADJUST (arXiv'25)</a> · <a href="#Learn2PD_ICLR_26">Learn2PD (ICLR'26)</a> · <a href="#dParallel_ICLR_26">dParallel (ICLR'26)</a> · <a href="#FreeDave_arXiv_25">FreeDave (NeurIPSW'25)</a> · <a href="#LocalLeap_arXiv_25">LocalLeap (arXiv'25)</a> · <a href="#Saber_arXiv_25">Saber (ACL'26)</a> · <a href="#LoPA_arXiv_25">LoPA (arXiv'25)</a> · <a href="#SchED_arXiv_25">SchED (Findings-ACL'26)</a> · <a href="#CadLLM_arXiv_25">CadLLM (Findings-ACL'26)</a> · <a href="#Learning_Unmasking_Policies_ICML_26">Learning Unmasking Policies (ICML'26)</a> · <a href="#Order-Token_Search_arXiv_26">Order-Token Search (arXiv'26)</a> · <a href="#d3LLM_ICML_26">d3LLM (ICML'26)</a> · <a href="#RDD_arXiv_26">RDD (arXiv'26)</a> · <a href="#ReMix_CVPR_26">ReMix (CVPR'26)</a> · <a href="#Info-Gain_Sampler_ICML_26">Info-Gain Sampler (ICML'26)</a> · <a href="#DOS_arXiv_26">DOS (Findings-ACL'26)</a> · <a href="#Confidence-Based_Decoding_arXiv_26">Confidence-Based Decoding (arXiv'26)</a></td>
 </tr>
 <tr>
 <td rowspan="2"><b>5. System and Infrastructure</b></td>
@@ -545,6 +545,7 @@ Architecture-level methods redesign training or generation so strict left-to-rig
 |2025.05|<a id="Fast-dLLM_ICLR_26"></a>[**[Fast-dLLM]** Training-free Acceleration of Diffusion LLM by Enabling KV Cache and Parallel Decoding](https://arxiv.org/abs/2505.22618)|Chengyue Wu et al. (@HKU \& NVIDIA \& MIT)|[[code]](https://github.com/NVlabs/Fast-dLLM)![](https://img.shields.io/github/stars/NVlabs/Fast-dLLM?style=social)|ICLR'26|
 |2025.06|<a id="SlowFast_Sampling_ICLR_26"></a>[**[SlowFast Sampling]** Accelerating Diffusion Large Language Models with SlowFast Sampling: The Three Golden Principles](https://arxiv.org/abs/2506.10848)|Qingyan Wei et al. (@SJTU \& Shanghai AI Lab)|[[code]](https://github.com/LiangrunFlora/Slow-Fast-Sampling)![](https://img.shields.io/github/stars/LiangrunFlora/Slow-Fast-Sampling?style=social)|ICLR'26|
 |2025.07|<a id="WINO_ICLR_26"></a>[**[WINO]** Wide-In, Narrow-Out: Revokable Decoding for Efficient and Effective DLLMs](https://arxiv.org/abs/2507.18578)|Feng Hong et al. (@SJTU \& Apple)|[[code]](https://github.com/Feng-Hong/WINO-DLLM)![](https://img.shields.io/github/stars/Feng-Hong/WINO-DLLM?style=social)|ICLR'26|
+|2025.08|<a id="UNCODE_ACL_26"></a>[**[UNCODE]** Empirical Analysis of Decoding Biases in Masked Diffusion Models](https://aclanthology.org/2026.acl-long.311/)|Pengcheng Huang et al. (@Northeastern University \& THU \& Alibaba)|[[code]](https://github.com/NEUIR/Uncode)![](https://img.shields.io/github/stars/NEUIR/Uncode?style=social)|ACL'26|
 |2025.08|<a id="Prophet_ICLR_26"></a>[**[Prophet]** Diffusion Language Models Know the Answer Before Decoding](https://arxiv.org/abs/2508.19982)|Pengxiang Li et al. (@PolyU HK \& Dartmouth \& Surrey \& Sun Yat-sen University \& ELLIS Institute Tübingen \& MPI-IS \& Tübingen AI Center)|[[code]](https://github.com/pixeli99/Prophet)![](https://img.shields.io/github/stars/pixeli99/Prophet?style=social)|ICLR'26|
 |2025.09|<a id="RWS_EMNLP_25"></a>[**[RWS]** Reward-Weighted Sampling: Enhancing Non-Autoregressive Characteristics in Masked Diffusion LLMs](https://arxiv.org/abs/2509.00707)|Daehoon Gwak et al. (@KAIST \& SKKU)| |EMNLP'25|
 |2025.09|<a id="LSD_NeurIPS_25"></a>[**[LSD]** Learnable Sampler Distillation for Discrete Diffusion Models](https://arxiv.org/abs/2509.19962)|Feiyang Fu et al. (@UESTC)|[[code]](https://github.com/feiyangfu/LSD)![](https://img.shields.io/github/stars/feiyangfu/LSD?style=social)|NeurIPS'25|
