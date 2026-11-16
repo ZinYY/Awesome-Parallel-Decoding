@@ -13,9 +13,9 @@
 
 📒 A curated list of **Awesome Parallel Decoding** papers to accelerate the inference of (autoregressive) LLMs.
 
-Autoregressive (AR) decoding generates one token per forward pass, leaving the strict token-by-token dependency as the dominant latency bottleneck of modern LLM serving. **Parallel decoding** refers to the broad family of techniques that shorten this critical path by introducing *parallel candidates*, *parallel verification*, *parallel reasoning steps*, or *parallel task orchestration*, while ideally preserving the quality (and, for lossless methods, the exact output distribution) of the original model. This repository organizes the literature along the **granularity of parallelism** — from (i) individual tokens, to (ii) reasoning sequences, to (iii) whole tasks — and additionally tracks the (iv) **model architecture-level** and (v) **system-level** improvements. We also introduce (vi) **hybrid** advances and (vii) **related benchmarks** that make parallel decoding practical.
+Autoregressive (AR) decoding generates one token per forward pass, leaving the strict token-by-token dependency as the dominant latency bottleneck of modern LLM serving. **Parallel decoding** refers to the broad family of techniques that shorten this critical path by introducing *parallel candidates*, *parallel verification*, *parallel reasoning steps*, or *parallel task orchestration*, while ideally preserving the quality (and, for lossless methods, the exact output distribution) of the original model. This repository organizes the literature along the **granularity of parallelism** — from (i) individual tokens, to (ii) reasoning sequences, to (iii) whole tasks — and additionally tracks the (iv) **model architecture-level** improvements and (v) **hybrid** advances. We also introduce (vi) **system-level** improvements and (vii) **related benchmarks** that make parallel decoding practical.
 
-<!-- Concretely, the collection is structured into seven parts: **(1) Token-level** methods (speculative decoding, self-speculation, multi-head / multi-token prediction, tree verification, retrieval, multi-draft theory, and resource-aware variants); **(2) Sequence-level** methods that speculate over reasoning steps and semantic units; **(3) Task-level** methods that parallelize agents, tools, and function calls; **(4) Architecture-level** methods that change the generation paradigm itself (diffusion LLMs, block-diffusion, semi-autoregressive models); **(5) System and infrastructure** support in production serving engines; **(6) Hybrid** methods that fuse multiple paradigms (e.g., speculative decoding × diffusion, model cascades × speculation); and **(7) Benchmarks and evaluation** resources. Contributions via pull requests are warmly welcomed. -->
+<!-- Concretely, the collection is structured into seven parts: **(1) Token-level** methods (speculative decoding, self-speculation, multi-head / multi-token prediction, tree verification, retrieval, multi-draft theory, and resource-aware variants); **(2) Sequence-level** methods that speculate over reasoning steps and semantic units; **(3) Task-level** methods that parallelize agents, tools, and function calls; **(4) Architecture-level** methods that change the generation paradigm itself (diffusion LLMs, block-diffusion, semi-autoregressive models); **(5) Hybrid** methods that fuse multiple paradigms (e.g., speculative decoding × diffusion, model cascades × speculation); **(6) System and infrastructure** support in production serving engines; and **(7) Benchmarks and evaluation** resources. Contributions via pull requests are warmly welcomed. -->
 
 ## 📢 News
 
@@ -29,8 +29,8 @@ Autoregressive (AR) decoding generates one token per forward pass, leaving the s
 - [📙 2. Sequence-Level Parallel Decoding](#class-2)
 - [📙 3. Task-Level Parallel Decoding](#class-3)
 - [📙 4. Architecture-Level Parallel Decoding](#class-4)
-- [📙 5. System and Infrastructure](#class-5)
-- [📙 6. Hybrid Methods](#class-6)
+- [📙 5. Hybrid Methods](#class-5)
+- [📙 6. System and Infrastructure](#class-6)
 - [📙 7. Benchmarks and Evaluation](#class-7)
 
 <!-- <a id="contents-with-subclasses"></a>
@@ -95,25 +95,25 @@ The taxonomy contains **341 category placements covering 339 unique papers**. **
 
     **27 papers.**
 
-- [📙 5. System and Infrastructure](#class-5)
+- [📙 5. Hybrid Methods](#class-5)
 
-  - [5.1 Serving and Scheduling](#subclass-5-1) — Runtime and serving techniques optimize batching, GPU scheduling, pipelines, distributed execution, caching, or SLO-aware adaptation for parallel decoding.
-
-    **17 papers.**
-
-  - [5.2 Algorithm-Infrastructure Co-Design](#subclass-5-2) — The decoding algorithm is co-designed with deployment constraints or systems techniques such as quantization, KV-cache management, MoE execution, or hardware-aware verification.
-
-    **11 papers.**
-
-- [📙 6. Hybrid Methods](#class-6)
-
-  - [6.1 Non-AR Drafter for AR Targets](#subclass-6-1) — A non-autoregressive or semi-autoregressive language model drafts multiple tokens in parallel for verification by an autoregressive target.
+  - [5.1 Non-AR Drafter for AR Targets](#subclass-5-1) — A non-autoregressive or semi-autoregressive language model drafts multiple tokens in parallel for verification by an autoregressive target.
 
     **15 papers.**
 
-  - [6.2 Speculation for Other Generative Paradigms](#subclass-6-2) — The draft-then-verify principle is transferred to diffusion language models, model cascades, continuous diffusion models, and visual autoregressive generation.
+  - [5.2 Speculation for Other Generative Paradigms](#subclass-5-2) — The draft-then-verify principle is transferred to diffusion language models, model cascades, continuous diffusion models, and visual autoregressive generation.
 
     **10 papers.**
+
+- [📙 6. System and Infrastructure](#class-6)
+
+  - [6.1 Serving and Scheduling](#subclass-6-1) — Runtime and serving techniques optimize batching, GPU scheduling, pipelines, distributed execution, caching, or SLO-aware adaptation for parallel decoding.
+
+    **17 papers.**
+
+  - [6.2 Algorithm-Infrastructure Co-Design](#subclass-6-2) — The decoding algorithm is co-designed with deployment constraints or systems techniques such as quantization, KV-cache management, MoE execution, or hardware-aware verification.
+
+    **11 papers.**
 
 - [📙 7. Benchmarks and Evaluation](#class-7) — **7 papers** directly under the layer: related surveys, benchmark suites, and diagnostic studies.
 
@@ -181,22 +181,22 @@ Within each section, papers run from older to newer; click a paper to jump to it
 <td><a href="#EB-Sampler_NeurIPS_25">EB-Sampler (NeurIPS'25)</a> · <a href="#Fast-dLLM_ICLR_26">Fast-dLLM (ICLR'26)</a> · <a href="#SlowFast_Sampling_ICLR_26">SlowFast Sampling (ICLR'26)</a> · <a href="#WINO_ICLR_26">WINO (ICLR'26)</a> · <a href="#TrajectoryRefinement_COLM_26">Trajectory Refinement (COLM'26)</a> · <a href="#Prophet_ICLR_26">Prophet (ICLR'26)</a> · <a href="#RWS_EMNLP_25">RWS (EMNLP'25)</a> · <a href="#LSD_NeurIPS_25">LSD (NeurIPS'25)</a> · <a href="#ADJUST_arXiv_25">ADJUST (arXiv'25)</a> · <a href="#Learn2PD_ICLR_26">Learn2PD (ICLR'26)</a> · <a href="#dParallel_ICLR_26">dParallel (ICLR'26)</a> · <a href="#FreeDave_arXiv_25">FreeDave (NeurIPSW'25)</a> · <a href="#LocalLeap_arXiv_25">LocalLeap (arXiv'25)</a> · <a href="#Saber_arXiv_25">Saber (ACL'26)</a> · <a href="#LoPA_arXiv_25">LoPA (arXiv'25)</a> · <a href="#SchED_arXiv_25">SchED (Findings-ACL'26)</a> · <a href="#CadLLM_arXiv_25">CadLLM (Findings-ACL'26)</a> · <a href="#Learning_Unmasking_Policies_ICML_26">Learning Unmasking Policies (ICML'26)</a> · <a href="#Order-Token_Search_arXiv_26">Order-Token Search (arXiv'26)</a> · <a href="#d3LLM_ICML_26">d3LLM (ICML'26)</a> · <a href="#RDD_arXiv_26">RDD (arXiv'26)</a> · <a href="#ReMix_CVPR_26">ReMix (CVPR'26)</a> · <a href="#Info-Gain_Sampler_ICML_26">Info-Gain Sampler (ICML'26)</a> · <a href="#DAWN_NeurIPS_26">DAWN (NeurIPS'26)</a> · <a href="#DOS_arXiv_26">DOS (Findings-ACL'26)</a> · <a href="#Confidence-Based_Decoding_arXiv_26">Confidence-Based Decoding (arXiv'26)</a> · <a href="#DependencyGuided_NeurIPS_26">Dependency-Guided (NeurIPS'26)</a></td>
 </tr>
 <tr>
-<td rowspan="2"><b>5. System and Infrastructure</b></td>
-<td><a href="#subclass-5-1">5.1 Serving and Scheduling</a></td>
-<td><a href="#TriForce_COLM_24">TriForce (COLM'24)</a> · <a href="#BASS_ACL_24">BASS (Findings-ACL'24)</a> · <a href="#DSI_ICLR_25">DSI (ICLR'25)</a> · <a href="#EMS-SD_NAACL_25">EMS-SD (NAACL'25)</a> · <a href="#SpecExec_NeurIPS_24">SpecExec (NeurIPS'24)</a> · <a href="#GPU-Opt_SS_EMNLP_24">Optimized Speculative Sampling (EMNLP'24)</a> · <a href="#MagicDec_ICLR_25">MagicDec (ICLR'25)</a> · <a href="#PEARL_ICLR_25">PEARL (ICLR'25)</a> · <a href="#Dovetail_EMNLP_25">Dovetail (EMNLP'25)</a> · <a href="#Attention-Level_Speculation_ICML_25">ALSpec (ICML'25)</a> · <a href="#EasySpec_NeurIPS_25">EasySpec (NeurIPS'25)</a> · <a href="#AdaSpec_SoCC_25">AdaSpec (SoCC'25)</a> · <a href="#Substitute_SD_NeurIPS_25">SubSpec (NeurIPS'25)</a> · <a href="#Mirror-SD_arXiv_25">Mirror-SD (arXiv'25)</a> · <a href="#dInfer">dInfer (arXiv'25)</a> · <a href="#dLLM-Serve">dLLM-Serve (arXiv'25)</a> · <a href="#LLM42_SOSP_26">LLM-42 (SOSP'26)</a></td>
-</tr>
-<tr>
-<td><a href="#subclass-5-2">5.2 Algorithm-Infrastructure Co-Design</a></td>
-<td><a href="#DeFT_ICLR_25">DeFT (ICLR'25)</a> · <a href="#QSpec_EMNLP_25">QSpec (EMNLP'25)</a> · <a href="#QuantSpec_ICML_25">QuantSpec (ICML'25)</a> · <a href="#Speculative_Prefill_ICML_25">SpecPrefill (ICML'25)</a> · <a href="#ML-SpecQD_arXiv_25">ML-SpecQD (arXiv'25)</a> · <a href="#SpeCache_ICML_25">SpeCache (ICML'25)</a> · <a href="#MoESD_NeurIPS_25">MoESD (NeurIPS'25)</a> · <a href="#Utility-Driven_MoE-SD_arXiv_25">Cascade (arXiv'25)</a> · <a href="#AsyncSpade_arXiv_25">AsyncSpade (ICML'26)</a> · <a href="#Specter_ASPLOS_27">Specter (ASPLOS'27)</a> · <a href="#Yggdrasil_NeurIPS_25">Yggdrasil (NeurIPS'25)</a></td>
-</tr>
-<tr>
-<td rowspan="2"><b>6. Hybrid Methods</b></td>
-<td><a href="#subclass-6-1">6.1 Non-AR Drafter for AR Targets</a></td>
+<td rowspan="2"><b>5. Hybrid Methods</b></td>
+<td><a href="#subclass-5-1">5.1 Non-AR Drafter for AR Targets</a></td>
 <td><a href="#SpecDiff_NAACL_25">SpecDiff (NAACL'25)</a> · <a href="#Falcon_AAAI_25">Falcon (AAAI'25)</a> · <a href="#DiffuSpec_arXiv_25">DiffuSpec (Findings-ACL'26)</a> · <a href="#SpecDiff-2_arXiv_25">SpecDiff-2 (MLSys'26)</a> · <a href="#DEER_arXiv_25">DEER (arXiv'25)</a> · <a href="#DART_arXiv_26">DART (arXiv'26)</a> · <a href="#DFlash_ICML_26">DFlash (ICML'26)</a> · <a href="#Domino_EMNLP_26">Domino (EMNLP'26)</a> · <a href="#JetSpec_arXiv_26-hybrid">JetSpec (arXiv'26)</a> · <a href="#DSpark_26">DSpark (arXiv'26)</a> · <a href="#DFlare_EMNLP_26">DFlare (EMNLP'26)</a> · <a href="#AdaFlash_arXiv_26">AdaFlash (arXiv'26)</a> · <a href="#LiLiCorr_arXiv_26">LiLiCorr (arXiv'26)</a> · <a href="#LongSpark_arXiv_26">LongSpark (arXiv'26)</a> · <a href="#JetSpecPP_arXiv_26">JetSpec++ (arXiv'26)</a></td>
 </tr>
 <tr>
-<td><a href="#subclass-6-2">6.2 Speculation for Other Generative Paradigms</a></td>
+<td><a href="#subclass-5-2">5.2 Speculation for Other Generative Paradigms</a></td>
 <td><a href="#Cascade_SD_NeurIPS_24">CS Drafting (NeurIPS'24)</a> · <a href="#Faster_Cascades_ICLR_25">Faster Cascades (ICLR'25)</a> · <a href="#Spec_Jacobi_T2I_ICLR_25">SJD (ICLR'25)</a> · <a href="#LANTERN_ICLR_25">LANTERN (ICLR'25)</a> · <a href="#Accel_Diffusion_via_SS_ICML_25">Accelerated Diffusion via Speculative Sampling (ICML'25)</a> · <a href="#Diffusion_Exchangeable_ICML_25">ASD (ICML'25)</a> · <a href="#APD_NeurIPS_25">APD (NeurIPS'25)</a> · <a href="#Spiffy_arXiv_25">Spiffy (ICMLW'26)</a> · <a href="#SSD_arXiv_25">SSD (arXiv'25)</a> · <a href="#ODB_arXiv_25">ODB-dLLM (DAC'26)</a></td>
+</tr>
+<tr>
+<td rowspan="2"><b>6. System and Infrastructure</b></td>
+<td><a href="#subclass-6-1">6.1 Serving and Scheduling</a></td>
+<td><a href="#TriForce_COLM_24">TriForce (COLM'24)</a> · <a href="#BASS_ACL_24">BASS (Findings-ACL'24)</a> · <a href="#DSI_ICLR_25">DSI (ICLR'25)</a> · <a href="#EMS-SD_NAACL_25">EMS-SD (NAACL'25)</a> · <a href="#SpecExec_NeurIPS_24">SpecExec (NeurIPS'24)</a> · <a href="#GPU-Opt_SS_EMNLP_24">Optimized Speculative Sampling (EMNLP'24)</a> · <a href="#MagicDec_ICLR_25">MagicDec (ICLR'25)</a> · <a href="#PEARL_ICLR_25">PEARL (ICLR'25)</a> · <a href="#Dovetail_EMNLP_25">Dovetail (EMNLP'25)</a> · <a href="#Attention-Level_Speculation_ICML_25">ALSpec (ICML'25)</a> · <a href="#EasySpec_NeurIPS_25">EasySpec (NeurIPS'25)</a> · <a href="#AdaSpec_SoCC_25">AdaSpec (SoCC'25)</a> · <a href="#Substitute_SD_NeurIPS_25">SubSpec (NeurIPS'25)</a> · <a href="#Mirror-SD_arXiv_25">Mirror-SD (arXiv'25)</a> · <a href="#dInfer">dInfer (arXiv'25)</a> · <a href="#dLLM-Serve">dLLM-Serve (arXiv'25)</a> · <a href="#LLM42_SOSP_26">LLM-42 (SOSP'26)</a></td>
+</tr>
+<tr>
+<td><a href="#subclass-6-2">6.2 Algorithm-Infrastructure Co-Design</a></td>
+<td><a href="#DeFT_ICLR_25">DeFT (ICLR'25)</a> · <a href="#QSpec_EMNLP_25">QSpec (EMNLP'25)</a> · <a href="#QuantSpec_ICML_25">QuantSpec (ICML'25)</a> · <a href="#Speculative_Prefill_ICML_25">SpecPrefill (ICML'25)</a> · <a href="#ML-SpecQD_arXiv_25">ML-SpecQD (arXiv'25)</a> · <a href="#SpeCache_ICML_25">SpeCache (ICML'25)</a> · <a href="#MoESD_NeurIPS_25">MoESD (NeurIPS'25)</a> · <a href="#Utility-Driven_MoE-SD_arXiv_25">Cascade (arXiv'25)</a> · <a href="#AsyncSpade_arXiv_25">AsyncSpade (ICML'26)</a> · <a href="#Specter_ASPLOS_27">Specter (ASPLOS'27)</a> · <a href="#Yggdrasil_NeurIPS_25">Yggdrasil (NeurIPS'25)</a></td>
 </tr>
 <tr>
 <td><b>7. Benchmarks and Evaluation</b></td>
@@ -604,12 +604,63 @@ Architecture-level methods redesign training or generation so strict left-to-rig
 |2026.04|<a id="DependencyGuided_NeurIPS_26"></a>[**Dependency-Guided Parallel Decoding in Discrete Diffusion Language Models**](https://neurips.cc/virtual/2026/poster/151486)|Liran Ringel, Ameen Ali, Yaniv Romano (@Technion \& Tel Aviv University)|[[code]](https://github.com/liranringel/demask)![](https://img.shields.io/github/stars/liranringel/demask?style=social)|NeurIPS'26|
 
 <a id="class-5"></a>
-## 📙 5. System and Infrastructure
+
+## 📙 5. Hybrid Methods
+
+Hybrid methods make the deliberate combination of multiple decoding or generative paradigms their central contribution.
+
+<a id="subclass-5-1"></a>
+### 5.1 Non-AR Drafter for AR Targets
+
+*A non-autoregressive or semi-autoregressive language model drafts multiple tokens in parallel for verification by an autoregressive target.*
+
+|Date|Title|Authors|Code|Venue|
+|:---:|:---|:---|:---:|:---:|
+|2024.08|<a id="SpecDiff_NAACL_25"></a>[**[SpecDiff]** Speculative Diffusion Decoding: Accelerating Language Generation through Diffusion](https://arxiv.org/abs/2408.05636)|Jacob K. Christopher et al. (@University of Virginia \& LLNL)| |NAACL'25|
+|2024.12|<a id="Falcon_AAAI_25"></a>[**[Falcon]** Faster and Parallel Inference of Large Language Models Through Enhanced Semi-Autoregressive Drafting and Custom-Designed Decoding Tree](https://arxiv.org/abs/2412.12639)|Xiangxiang Gao, Weisheng Xie, Yiwei Xiang, Feng Ji (@Bestpay AI Lab)|[[code]](https://github.com/Bestpay-inc/Falcon)![](https://img.shields.io/github/stars/Bestpay-inc/Falcon?style=social)|AAAI'25|
+|2025.10|<a id="DiffuSpec_arXiv_25"></a>[**[DiffuSpec]** Unlocking Diffusion Language Models for Speculative Decoding](https://arxiv.org/abs/2510.02358)|Guanghao Li, Zhihui Fu et al. (@THU \& SUSTech \& OPPO Research Institute)|[[code (unofficial)]](https://github.com/pluto0x0/DiffuSpec/tree/main)![](https://img.shields.io/github/stars/pluto0x0/DiffuSpec?style=social)|Findings-ACL'26|
+|2025.11|<a id="SpecDiff-2_arXiv_25"></a>[**[SpecDiff-2]** Scaling Diffusion Drafter Alignment For Faster Speculative Decoding](https://proceedings.mlsys.org/paper_files/paper/2026/hash/041dad5ed2191b44ba3ed0e00cdc3187-Abstract-Conference.html)|Jameson Sandler et al. (@University of Virginia)| |MLSys'26|
+|2025.12|<a id="DEER_arXiv_25"></a>[**[DEER]** Draft with Diffusion, Verify with Autoregressive Models](https://arxiv.org/abs/2512.15176)|Zicong Cheng, Guo-Wei Yang et al. (@THU \& Proxseer Inc \& SJTU)|[[repo (code coming soon)]](https://github.com/czc726/DEER)![](https://img.shields.io/github/stars/czc726/DEER?style=social)|arXiv'25|
+|2026.01|<a id="DART_arXiv_26"></a>[**[DART]** Diffusion-Inspired Speculative Decoding for Fast LLM Inference](https://arxiv.org/abs/2601.19278)|Fuliang Liu, Xue Li et al. (@NJU \& Alibaba)|[[code]](https://github.com/fvliang/DART)![](https://img.shields.io/github/stars/fvliang/DART?style=social)|arXiv'26|
+|2026.02|<a id="DFlash_ICML_26"></a>[**[DFlash]** Block Diffusion for Flash Speculative Decoding](https://arxiv.org/abs/2602.06036)|Jian Chen, Yesheng Liang, Zhijian Liu (@UCSD)|[[code]](https://github.com/z-lab/dflash)![](https://img.shields.io/github/stars/z-lab/dflash?style=social)|ICML'26|
+|2026.05|<a id="Domino_EMNLP_26"></a>[**[Domino]** Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding](https://arxiv.org/abs/2605.29707)|Jianuo Huang et al. (@SJTU \& HUST \& UESTC \& Fudan \& Huawei)|[[code]](https://github.com/jianuo-huang/Domino)![](https://img.shields.io/github/stars/jianuo-huang/Domino?style=social)|EMNLP'26|
+|2026.06|<a id="JetSpec_arXiv_26-hybrid"></a>[**[JetSpec]** Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting](https://arxiv.org/abs/2606.18394)|Lanxiang Hu et al. (@UCSD \& NJU \& StepFun)|[[code]](https://github.com/hao-ai-lab/JetSpec)![](https://img.shields.io/github/stars/hao-ai-lab/JetSpec?style=social)|arXiv'26|
+|2026.07|<a id="DSpark_26"></a>[**[DSpark]** Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation](https://arxiv.org/abs/2607.05147)|Xin Cheng et al. (@DeepSeek-AI \& PKU)|[[code]](https://github.com/deepseek-ai/DeepSpec)![](https://img.shields.io/github/stars/deepseek-ai/DeepSpec?style=social)|arXiv'26|
+|2026.06|<a id="DFlare_EMNLP_26"></a>[**[DFlare]** DFlare: Scaling Up Draft Capacity for Block Diffusion Speculative Decoding](https://arxiv.org/abs/2606.02091)|Jiebin Zhang et al. (@PKU \& Tencent)|[[code]](https://github.com/Tencent/AngelSlim)![](https://img.shields.io/github/stars/Tencent/AngelSlim?style=social)|EMNLP'26|
+|2026.07|<a id="AdaFlash_arXiv_26"></a>[**[AdaFlash]** Adaptive Speculative Decoding via On-Policy Distilled Diffusion Drafters](https://arxiv.org/abs/2607.19223)|Yu-Yang Qian et al. (@NJU \& Huawei)| |arXiv'26|
+|2026.08|<a id="LiLiCorr_arXiv_26"></a>[**[LiLiCorr]** LiLiCorr: Lightweight Likelihood Correlation of Parallel Drafts for Speculative Decoding](https://arxiv.org/abs/2608.20530)|Matan Rusanovsky et al. (@NVIDIA)| |arXiv'26|
+|2026.09|<a id="LongSpark_arXiv_26"></a>[**[LongSpark]** LongSpark: Efficient speculative decoding with a fixed-cost parallel drafter](https://arxiv.org/abs/2609.37029)|Hao-Yuan He et al. (@Nanjing University \& Huawei)|[[code]](https://github.com/Hao-Yuan-He/LongSpark)![](https://img.shields.io/github/stars/Hao-Yuan-He/LongSpark?style=social)|arXiv'26|
+|2026.10|<a id="JetSpecPP_arXiv_26"></a>[**[JetSpec++]** JetSpec++: Foresight Parallel Drafting with Self Refinements](https://arxiv.org/abs/2610.19792)|Zhaoxiang Feng et al. (@UCSD \& UIUC \& Nanjing University \& Meta \& StepFun)|[[code]](https://github.com/hao-ai-lab/JetSpec)![](https://img.shields.io/github/stars/hao-ai-lab/JetSpec?style=social)|arXiv'26|
+
+<a id="subclass-5-2"></a>
+
+### 5.2 Speculation for Other Generative Paradigms
+
+*The draft-then-verify principle is transferred to diffusion language models, model cascades, continuous diffusion models, and visual autoregressive generation.*
+
+|Date|Title|Authors|Code|Venue|
+|:---:|:---|:---|:---:|:---:|
+|2023.12|<a id="Cascade_SD_NeurIPS_24"></a>[**[CS Drafting]** Cascade Speculative Drafting for Even Faster LLM Inference](https://arxiv.org/abs/2312.11462)|Ziyi Chen et al. (@UIUC)|[[code]](https://github.com/lfsszd/CS-Drafting)![](https://img.shields.io/github/stars/lfsszd/CS-Drafting?style=social)|NeurIPS'24|
+|2024.05|<a id="Faster_Cascades_ICLR_25"></a>[**Faster Cascades via Speculative Decoding**](https://arxiv.org/abs/2405.19261)|Harikrishna Narasimhan et al. (@Google Research \& Google DeepMind \& Mistral AI)| |ICLR'25|
+|2024.10|<a id="Spec_Jacobi_T2I_ICLR_25"></a>[**[SJD]** Accelerating Auto-regressive Text-to-Image Generation with Training-free Speculative Jacobi Decoding](https://arxiv.org/abs/2410.01699)|Yao Teng, Han Shi et al. (@HKU \& Huawei \& CUHK \& THU \& SJTU \& Infinigence AI)|[[code]](https://github.com/tyshiwo1/Accelerating-T2I-AR-with-SJD)![](https://img.shields.io/github/stars/tyshiwo1/Accelerating-T2I-AR-with-SJD?style=social)|ICLR'25|
+|2024.10|<a id="LANTERN_ICLR_25"></a>[**[LANTERN]** Accelerating Visual Autoregressive Models with Relaxed Speculative Decoding](https://arxiv.org/abs/2410.03355)|Doohyuk Jang, Sihwan Park et al. (@KAIST \& Intel \& AITRICS)|[[code]](https://github.com/jadohu/LANTERN)![](https://img.shields.io/github/stars/jadohu/LANTERN?style=social)|ICLR'25|
+|2025.01|<a id="Accel_Diffusion_via_SS_ICML_25"></a>[**Accelerated Diffusion Models via Speculative Sampling**](https://arxiv.org/abs/2501.05370)|Valentin De Bortoli, Alexandre Galashov et al. (@Google DeepMind)| |ICML'25|
+|2025.05|<a id="Diffusion_Exchangeable_ICML_25"></a>[**[ASD]** Diffusion Models are Secretly Exchangeable: Parallelizing DDPMs via Auto Speculation](https://arxiv.org/abs/2505.03983)|Hengyuan Hu, Aniket Das et al. (@Stanford)| |ICML'25|
+|2025.06|<a id="APD_NeurIPS_25"></a>[**[APD]** Accelerating Diffusion LLMs via Adaptive Parallel Decoding](https://arxiv.org/abs/2506.00413)|Daniel Israel et al. (@UCLA)|[[code]](https://github.com/danielmisrael/apd)![](https://img.shields.io/github/stars/danielmisrael/apd?style=social)|NeurIPS'25|
+|2025.09|<a id="Spiffy_arXiv_25"></a>[**[Spiffy]** Structuring The Future: Diffusion LLM Speculative Decoding via Calibrated Draft Graphs](https://openreview.net/forum?id=4pqGfgZ2e6)|Sudhanshu Agrawal, Risheek Garrepalli et al. (@Qualcomm AI Research)| |ICMLW'26|
+|2025.10|<a id="SSD_arXiv_25"></a>[**[SSD]** Self Speculative Decoding for Diffusion Large Language Models](https://arxiv.org/abs/2510.04147)|Yifeng Gao, Ziang Ji et al. (@SJTU \& USTC \& Xidian University \& Shanghai AI Lab \& Huawei)| |arXiv'25|
+|2025.11|<a id="ODB_arXiv_25"></a>[**[ODB-dLLM]** Orchestrating Dual-Boundaries: An Arithmetic Intensity Inspired Acceleration Framework for Diffusion Language Models](https://arxiv.org/abs/2511.21759)|Linye Wei, Wenjue Chen et al. (@PKU)|[[code]](https://github.com/PKU-SEC-Lab/ODB-dLLM)![](https://img.shields.io/github/stars/PKU-SEC-Lab/ODB-dLLM?style=social)|DAC'26|
+
+> **Related hybrid resource.** *Speculative Cascades — A hybrid approach for smarter, faster LLM inference* ([Google Research blog, 2025](https://research.google/blog/speculative-cascades-a-hybrid-approach-for-smarter-faster-llm-inference/)) connects routing, selection, and speculation into one production-oriented framework.
+
+<a id="class-6"></a>
+
+## 📙 6. System and Infrastructure
 
 System and infrastructure work turns algorithmic parallelism into reliable latency, throughput, memory, and SLO gains through serving, scheduling, and algorithm–runtime co-design.
 
-<a id="subclass-5-1"></a>
-### 5.1 Serving and Scheduling
+<a id="subclass-6-1"></a>
+### 6.1 Serving and Scheduling
 
 *Runtime and serving techniques optimize batching, GPU scheduling, pipelines, distributed execution, caching, or SLO-aware adaptation for parallel decoding.*
 
@@ -633,8 +684,8 @@ System and infrastructure work turns algorithmic parallelism into reliable laten
 |2025.12|<a id="dLLM-Serve"></a>[**[dLLM-Serve]** Taming the Memory Footprint Crisis: System Design for Production Diffusion LLM Serving](https://arxiv.org/abs/2512.17077)|Jiakun Fan et al. (@Virginia Tech)|[[code]](https://github.com/chosen-ox/dLLM-Serve)![](https://img.shields.io/github/stars/chosen-ox/dLLM-Serve?style=social)|arXiv'25|
 |2026.01|<a id="LLM42_SOSP_26"></a>[**[LLM-42]** LLM-42: Enabling Determinism in LLM Inference with Verified Speculation](https://dl.acm.org/doi/10.1145/3830418.3843901)|Raja Gond et al. (@Microsoft Research \& University of Washington)|[[code]](https://github.com/microsoft/llm-42)![](https://img.shields.io/github/stars/microsoft/llm-42?style=social)|SOSP'26|
 
-<a id="subclass-5-2"></a>
-### 5.2 Algorithm-Infrastructure Co-Design
+<a id="subclass-6-2"></a>
+### 6.2 Algorithm-Infrastructure Co-Design
 
 *The decoding algorithm is co-designed with deployment constraints or systems techniques such as quantization, KV-cache management, MoE execution, and hardware-aware verification.*
 
@@ -667,55 +718,8 @@ These software projects support speculative or parallel decoding but are not pap
 |<a id="Speculators"></a>[**Speculators**](https://github.com/vllm-project/speculators)|Library|Unified abstraction \& training for SD drafters (vLLM-native)|[[code]](https://github.com/vllm-project/speculators)![](https://img.shields.io/github/stars/vllm-project/speculators?style=social)|
 |<a id="TorchSpec"></a>[**TorchSpec**](https://pytorch.org/blog/torchspec-speculative-decoding-training-at-scale/)|Training framework|PyTorch-native large-scale SD drafter training|[[code]](https://github.com/lightseekorg/TorchSpec)![](https://img.shields.io/github/stars/lightseekorg/TorchSpec?style=social)|
 
-<a id="class-6"></a>
-## 📙 6. Hybrid Methods
-
-Hybrid methods make the deliberate combination of multiple decoding or generative paradigms their central contribution.
-
-<a id="subclass-6-1"></a>
-### 6.1 Non-AR Drafter for AR Targets
-
-*A non-autoregressive or semi-autoregressive language model drafts multiple tokens in parallel for verification by an autoregressive target.*
-
-|Date|Title|Authors|Code|Venue|
-|:---:|:---|:---|:---:|:---:|
-|2024.08|<a id="SpecDiff_NAACL_25"></a>[**[SpecDiff]** Speculative Diffusion Decoding: Accelerating Language Generation through Diffusion](https://arxiv.org/abs/2408.05636)|Jacob K. Christopher et al. (@University of Virginia \& LLNL)| |NAACL'25|
-|2024.12|<a id="Falcon_AAAI_25"></a>[**[Falcon]** Faster and Parallel Inference of Large Language Models Through Enhanced Semi-Autoregressive Drafting and Custom-Designed Decoding Tree](https://arxiv.org/abs/2412.12639)|Xiangxiang Gao, Weisheng Xie, Yiwei Xiang, Feng Ji (@Bestpay AI Lab)|[[code]](https://github.com/Bestpay-inc/Falcon)![](https://img.shields.io/github/stars/Bestpay-inc/Falcon?style=social)|AAAI'25|
-|2025.10|<a id="DiffuSpec_arXiv_25"></a>[**[DiffuSpec]** Unlocking Diffusion Language Models for Speculative Decoding](https://arxiv.org/abs/2510.02358)|Guanghao Li, Zhihui Fu et al. (@THU \& SUSTech \& OPPO Research Institute)|[[code (unofficial)]](https://github.com/pluto0x0/DiffuSpec/tree/main)![](https://img.shields.io/github/stars/pluto0x0/DiffuSpec?style=social)|Findings-ACL'26|
-|2025.11|<a id="SpecDiff-2_arXiv_25"></a>[**[SpecDiff-2]** Scaling Diffusion Drafter Alignment For Faster Speculative Decoding](https://proceedings.mlsys.org/paper_files/paper/2026/hash/041dad5ed2191b44ba3ed0e00cdc3187-Abstract-Conference.html)|Jameson Sandler et al. (@University of Virginia)| |MLSys'26|
-|2025.12|<a id="DEER_arXiv_25"></a>[**[DEER]** Draft with Diffusion, Verify with Autoregressive Models](https://arxiv.org/abs/2512.15176)|Zicong Cheng, Guo-Wei Yang et al. (@THU \& Proxseer Inc \& SJTU)|[[repo (code coming soon)]](https://github.com/czc726/DEER)![](https://img.shields.io/github/stars/czc726/DEER?style=social)|arXiv'25|
-|2026.01|<a id="DART_arXiv_26"></a>[**[DART]** Diffusion-Inspired Speculative Decoding for Fast LLM Inference](https://arxiv.org/abs/2601.19278)|Fuliang Liu, Xue Li et al. (@NJU \& Alibaba)|[[code]](https://github.com/fvliang/DART)![](https://img.shields.io/github/stars/fvliang/DART?style=social)|arXiv'26|
-|2026.02|<a id="DFlash_ICML_26"></a>[**[DFlash]** Block Diffusion for Flash Speculative Decoding](https://arxiv.org/abs/2602.06036)|Jian Chen, Yesheng Liang, Zhijian Liu (@UCSD)|[[code]](https://github.com/z-lab/dflash)![](https://img.shields.io/github/stars/z-lab/dflash?style=social)|ICML'26|
-|2026.05|<a id="Domino_EMNLP_26"></a>[**[Domino]** Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding](https://arxiv.org/abs/2605.29707)|Jianuo Huang et al. (@SJTU \& HUST \& UESTC \& Fudan \& Huawei)|[[code]](https://github.com/jianuo-huang/Domino)![](https://img.shields.io/github/stars/jianuo-huang/Domino?style=social)|EMNLP'26|
-|2026.06|<a id="JetSpec_arXiv_26-hybrid"></a>[**[JetSpec]** Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting](https://arxiv.org/abs/2606.18394)|Lanxiang Hu et al. (@UCSD \& NJU \& StepFun)|[[code]](https://github.com/hao-ai-lab/JetSpec)![](https://img.shields.io/github/stars/hao-ai-lab/JetSpec?style=social)|arXiv'26|
-|2026.07|<a id="DSpark_26"></a>[**[DSpark]** Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation](https://arxiv.org/abs/2607.05147)|Xin Cheng et al. (@DeepSeek-AI \& PKU)|[[code]](https://github.com/deepseek-ai/DeepSpec)![](https://img.shields.io/github/stars/deepseek-ai/DeepSpec?style=social)|arXiv'26|
-|2026.06|<a id="DFlare_EMNLP_26"></a>[**[DFlare]** DFlare: Scaling Up Draft Capacity for Block Diffusion Speculative Decoding](https://arxiv.org/abs/2606.02091)|Jiebin Zhang et al. (@PKU \& Tencent)|[[code]](https://github.com/Tencent/AngelSlim)![](https://img.shields.io/github/stars/Tencent/AngelSlim?style=social)|EMNLP'26|
-|2026.07|<a id="AdaFlash_arXiv_26"></a>[**[AdaFlash]** Adaptive Speculative Decoding via On-Policy Distilled Diffusion Drafters](https://arxiv.org/abs/2607.19223)|Yu-Yang Qian et al. (@NJU \& Huawei)| |arXiv'26|
-|2026.08|<a id="LiLiCorr_arXiv_26"></a>[**[LiLiCorr]** LiLiCorr: Lightweight Likelihood Correlation of Parallel Drafts for Speculative Decoding](https://arxiv.org/abs/2608.20530)|Matan Rusanovsky et al. (@NVIDIA)| |arXiv'26|
-|2026.09|<a id="LongSpark_arXiv_26"></a>[**[LongSpark]** LongSpark: Efficient speculative decoding with a fixed-cost parallel drafter](https://arxiv.org/abs/2609.37029)|Hao-Yuan He et al. (@Nanjing University \& Huawei)|[[code]](https://github.com/Hao-Yuan-He/LongSpark)![](https://img.shields.io/github/stars/Hao-Yuan-He/LongSpark?style=social)|arXiv'26|
-|2026.10|<a id="JetSpecPP_arXiv_26"></a>[**[JetSpec++]** JetSpec++: Foresight Parallel Drafting with Self Refinements](https://arxiv.org/abs/2610.19792)|Zhaoxiang Feng et al. (@UCSD \& UIUC \& Nanjing University \& Meta \& StepFun)|[[code]](https://github.com/hao-ai-lab/JetSpec)![](https://img.shields.io/github/stars/hao-ai-lab/JetSpec?style=social)|arXiv'26|
-
-<a id="subclass-6-2"></a>
-### 6.2 Speculation for Other Generative Paradigms
-
-*The draft-then-verify principle is transferred to diffusion language models, model cascades, continuous diffusion models, and visual autoregressive generation.*
-
-|Date|Title|Authors|Code|Venue|
-|:---:|:---|:---|:---:|:---:|
-|2023.12|<a id="Cascade_SD_NeurIPS_24"></a>[**[CS Drafting]** Cascade Speculative Drafting for Even Faster LLM Inference](https://arxiv.org/abs/2312.11462)|Ziyi Chen et al. (@UIUC)|[[code]](https://github.com/lfsszd/CS-Drafting)![](https://img.shields.io/github/stars/lfsszd/CS-Drafting?style=social)|NeurIPS'24|
-|2024.05|<a id="Faster_Cascades_ICLR_25"></a>[**Faster Cascades via Speculative Decoding**](https://arxiv.org/abs/2405.19261)|Harikrishna Narasimhan et al. (@Google Research \& Google DeepMind \& Mistral AI)| |ICLR'25|
-|2024.10|<a id="Spec_Jacobi_T2I_ICLR_25"></a>[**[SJD]** Accelerating Auto-regressive Text-to-Image Generation with Training-free Speculative Jacobi Decoding](https://arxiv.org/abs/2410.01699)|Yao Teng, Han Shi et al. (@HKU \& Huawei \& CUHK \& THU \& SJTU \& Infinigence AI)|[[code]](https://github.com/tyshiwo1/Accelerating-T2I-AR-with-SJD)![](https://img.shields.io/github/stars/tyshiwo1/Accelerating-T2I-AR-with-SJD?style=social)|ICLR'25|
-|2024.10|<a id="LANTERN_ICLR_25"></a>[**[LANTERN]** Accelerating Visual Autoregressive Models with Relaxed Speculative Decoding](https://arxiv.org/abs/2410.03355)|Doohyuk Jang, Sihwan Park et al. (@KAIST \& Intel \& AITRICS)|[[code]](https://github.com/jadohu/LANTERN)![](https://img.shields.io/github/stars/jadohu/LANTERN?style=social)|ICLR'25|
-|2025.01|<a id="Accel_Diffusion_via_SS_ICML_25"></a>[**Accelerated Diffusion Models via Speculative Sampling**](https://arxiv.org/abs/2501.05370)|Valentin De Bortoli, Alexandre Galashov et al. (@Google DeepMind)| |ICML'25|
-|2025.05|<a id="Diffusion_Exchangeable_ICML_25"></a>[**[ASD]** Diffusion Models are Secretly Exchangeable: Parallelizing DDPMs via Auto Speculation](https://arxiv.org/abs/2505.03983)|Hengyuan Hu, Aniket Das et al. (@Stanford)| |ICML'25|
-|2025.06|<a id="APD_NeurIPS_25"></a>[**[APD]** Accelerating Diffusion LLMs via Adaptive Parallel Decoding](https://arxiv.org/abs/2506.00413)|Daniel Israel et al. (@UCLA)|[[code]](https://github.com/danielmisrael/apd)![](https://img.shields.io/github/stars/danielmisrael/apd?style=social)|NeurIPS'25|
-|2025.09|<a id="Spiffy_arXiv_25"></a>[**[Spiffy]** Structuring The Future: Diffusion LLM Speculative Decoding via Calibrated Draft Graphs](https://openreview.net/forum?id=4pqGfgZ2e6)|Sudhanshu Agrawal, Risheek Garrepalli et al. (@Qualcomm AI Research)| |ICMLW'26|
-|2025.10|<a id="SSD_arXiv_25"></a>[**[SSD]** Self Speculative Decoding for Diffusion Large Language Models](https://arxiv.org/abs/2510.04147)|Yifeng Gao, Ziang Ji et al. (@SJTU \& USTC \& Xidian University \& Shanghai AI Lab \& Huawei)| |arXiv'25|
-|2025.11|<a id="ODB_arXiv_25"></a>[**[ODB-dLLM]** Orchestrating Dual-Boundaries: An Arithmetic Intensity Inspired Acceleration Framework for Diffusion Language Models](https://arxiv.org/abs/2511.21759)|Linye Wei, Wenjue Chen et al. (@PKU)|[[code]](https://github.com/PKU-SEC-Lab/ODB-dLLM)![](https://img.shields.io/github/stars/PKU-SEC-Lab/ODB-dLLM?style=social)|DAC'26|
-
-> **Related hybrid resource.** *Speculative Cascades — A hybrid approach for smarter, faster LLM inference* ([Google Research blog, 2025](https://research.google/blog/speculative-cascades-a-hybrid-approach-for-smarter-faster-llm-inference/)) connects routing, selection, and speculation into one production-oriented framework.
-
 <a id="class-7"></a>
+
 ## 📙 7. Benchmarks and Evaluation
 
 This layer organizes and evaluates the field through related surveys, benchmark suites, and diagnostic studies.
