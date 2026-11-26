@@ -803,5 +803,5 @@ Contributions are very welcome! If you would like to add a paper, fix metadata (
 Please feel free to join our wechat group by scanning the QR code below:
 
 <p align="center">
-  <img src="https://www.lamda.nju.edu.cn/qianyy/index_files/wechat.png" alt="Wechat Group" width="360" />
+  <img src="./asset/imgs/wechat.png" alt="Wechat Group" width="360" />
 </p>
