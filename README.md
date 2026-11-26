@@ -797,3 +797,11 @@ Contributions are very welcome! If you would like to add a paper, fix metadata (
 ```
 
 📖 Our survey paper is at [this file](./paper/PD_Survey.pdf).
+
+## 💬 Wechat Group
+
+Please feel free to join our wechat group by scanning the QR code below:
+
+<p align="center">
+  <img src="https://www.lamda.nju.edu.cn/qianyy/index_files/wechat.png" alt="Wechat Group" width="360" />
+</p>
